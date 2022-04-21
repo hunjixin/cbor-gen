@@ -2,10 +2,23 @@ package typegen
 
 import (
 	"fmt"
+	"math/big"
 	"reflect"
 	"sort"
 	"strings"
 	"sync"
+
+	cid "github.com/ipfs/go-cid"
+)
+
+const MaxLength = 8192
+
+const ByteArrayMaxLen = 2 << 20
+
+var (
+	cidType      = reflect.TypeOf(cid.Cid{})
+	bigIntType   = reflect.TypeOf(big.Int{})
+	deferredType = reflect.TypeOf(Deferred{})
 )
 
 var (
